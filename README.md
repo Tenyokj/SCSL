@@ -13,6 +13,20 @@ This project is intentionally split into two major areas:
 - `examples/`: the educational encyclopedia of vulnerabilities, exploit flows, secure rewrites, and test cases.
 - `library/`: the reusable Solidity security primitives that will be designed for direct integration into real projects.
 
+Install the package layer with:
+
+```bash
+npm install @scsl/contracts
+```
+
+Then import the primitives you need directly from the package source tree:
+
+```solidity
+import {ReentrancyGuard} from "@scsl/contracts/library/guards/ReentrancyGuard.sol";
+import {TwoStepOwnable} from "@scsl/contracts/library/access/TwoStepOwnable.sol";
+import {ExecutionConstraints} from "@scsl/contracts/library/trading/ExecutionConstraints.sol";
+```
+
 The philosophy of the repository is simple:
 
 > To secure smart contracts, you must first learn how to break them.
@@ -63,13 +77,6 @@ Do not commit:
 - `cache/`
 - `coverage/`
 
-Right now, because the library is still under active development, it is also reasonable to keep the temporary development-only layers in the repository:
-
-- `library/mocks/`
-- `library/test/`
-
-Later, when the reusable package surface is finalized, those temporary files can be removed from the published library layer.
-
 ## What Lives In `examples`
 
 Each vulnerability module is a full educational unit with:
@@ -105,6 +112,21 @@ This layer is intended to become the package-quality part of SCSL.
 
 The long-term direction is to make `library/` suitable for packaging and reuse, while `examples/` remains the open educational knowledge base of the project.
 
+Current reusable package primitives include:
+
+- `library/guards/ReentrancyGuard.sol`
+- `library/access/TwoStepOwnable.sol`
+- `library/payments/PullPaymentEscrow.sol`
+- `library/payments/NativeTransfer.sol`
+- `library/signatures/SignatureAuthorizer.sol`
+- `library/auth/NoncedAuthorizations.sol`
+- `library/proxy/TrustedPluginRegistry.sol`
+- `library/storage/EIP1967SlotAccess.sol`
+- `library/trading/ExecutionConstraints.sol`
+- `library/oracle/TrustedPriceOracleConsumer.sol`
+- `library/accounting/BalanceAccounting.sol`
+- `library/time/BlockCooldown.sol`
+
 ## Current Example Modules
 
 - `reentrancy`
@@ -136,6 +158,12 @@ Compile all example contracts:
 
 ```bash
 npx hardhat compile
+```
+
+Preview the npm package contents before publishing:
+
+```bash
+npm run pack:check
 ```
 
 Run only the library development tests:
