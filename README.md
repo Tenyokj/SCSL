@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./public/SCSL_logo.png" alt="SCSL logo" width="220" />
+  <img src="./public/SCSL_logo.png" alt="SCSL logo" width="600" />
 </p>
 
 # SCSL
