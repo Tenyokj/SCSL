@@ -16,7 +16,7 @@ This project is intentionally split into two major areas:
 Install the package layer with:
 
 ```bash
-npm install @scsl/contracts
+npm install @tenyokj/scsl-contracts
 ```
 
 Then import the primitives you need directly from the package source tree:
